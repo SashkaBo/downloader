@@ -2,11 +2,11 @@
 <div class="page-header">
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
-<div>
+<div class="well span4">
   <% if can? :create, Doc %>
       <%= form_for current_user, url: docs_path, method: :post do |f| %>
-          <%= f.file_field :files, multiple: true  %>
-          <%= f.submit "Upload" %>
+          <%= f.file_field :files, multiple: true %>
+          <%= f.submit "Upload", :class => "btn btn-primary" %>
       <% end %>
   <% end %>
 </div>
