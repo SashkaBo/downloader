@@ -45,3 +45,4 @@ end
 gem 'mongoid'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
+gem 'mongoid-paperclip', :require => 'mongoid_paperclip'
