@@ -1,5 +1,8 @@
 class DocsController < ApplicationController
 
+  before_action :authenticate_user!, except: :index
+  authorize_resource
+
   def index
     @docs = []
     User.each { |u| @docs += u.docs }

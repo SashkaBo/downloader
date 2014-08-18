@@ -3,7 +3,7 @@
   <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
 </div>
 <div>
-  <% if user_signed_in? %>
+  <% if can? :create, Doc %>
       <%= form_for current_user, url: docs_path, method: :post do |f| %>
           <%= f.file_field :files, multiple: true  %>
           <%= f.submit "Upload" %>
@@ -28,7 +28,7 @@
         <td><%= doc.attachment.url %></td>
         <td><%=l doc.attachment_updated_at %></td>
         <td>
-          <% if current_user == doc.user %>
+          <% if can? :delete, doc %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       doc_path(doc, user_id: doc.user.id),
                       :method => :delete,

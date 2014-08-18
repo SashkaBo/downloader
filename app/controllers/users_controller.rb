@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:update, :destroy, :edit, :show]
+  before_action :authenticate_user!
+  load_and_authorize_resource only: [:update, :destroy, :edit, :show]
+
 
   def update
     respond_to do |format|
