@@ -24,15 +24,17 @@
     <% @docs.each do |doc| %>
       <tr>
         <td><%= link_to doc.attachment_file_name, doc.attachment.url %></td>
-        <td><%= doc.user.id %></td>
+        <td><%= doc.user.name %></td>
         <td><%= doc.attachment.url %></td>
         <td><%=l doc.attachment_updated_at %></td>
         <td>
-          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+          <% if current_user == doc.user %>
+            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       doc_path(doc, user_id: doc.user.id),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
+          <% end %>
         </td>
       </tr>
     <% end %>

@@ -13,7 +13,7 @@ class DocsController < ApplicationController
         format.html { redirect_to docs_path, notice: 'New file was successfully added.' }
         format.json { head :no_content }
       else
-        format.html { redirect_to users_path, alert: "New file wasn't added!" }
+        format.html { redirect_to docs_path, alert: "New file wasn't added!" }
         format.json { head :no_content }
       end
     end
