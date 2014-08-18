@@ -3,6 +3,7 @@ class DocsController < ApplicationController
   def index
     @docs = []
     User.each { |u| @docs += u.docs }
+    @docs.sort! {|a, b| b.attachment_updated_at <=> a.attachment_updated_at }
   end
 
   def create
